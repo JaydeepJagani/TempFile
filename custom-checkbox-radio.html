@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+/*checkbox and radio button*/
+jQuery(document).ready(function(){
+  jQuerycust_lbl='label';
+  jQuerycust_chk='checked';
+  jQuerycust_opt_wrp='.custom-opt';
+  jQuerycust_chk_wrp='.custom-chk';
+  jQuerycust_input_chk="input[type='checkbox']";
+  jQuerycust_input_opt="input[type='radio']";
+  
+  jQuery(jQuerycust_chk_wrp + ' ' + jQuerycust_lbl + ', ' + jQuerycust_opt_wrp + ' ' + jQuerycust_lbl).each(function(){   
+    jQuery(this).find('input:checked').parent(this).addClass(jQuerycust_chk);   
+  });
+  jQuery(document).on('change',jQuerycust_input_chk, function (event) {
+    jQuery(this).parents('label').toggleClass(jQuerycust_chk);
+    event.stopImmediatePropagation();
+  });
+  jQuery(document).on('change',jQuerycust_input_opt, function (event) {       
+    jQuery(jQuerycust_opt_wrp).find(("input:not(:checked)")).parents(jQuerycust_lbl).removeClass(jQuerycust_chk);
+    jQuery(this).parents(jQuerycust_lbl).addClass(jQuerycust_chk);
+    event.stopImmediatePropagation();
+  });
+  
+});
+</script>
+<style type="text/css">
+/* Custom Radio and Checkbox */
+.custom-chk, .custom-opt { margin-top: 10px; }
+.custom-chk input[type="checkbox"],  .custom-opt input[type="radio"] { left:-9999px; position:absolute; }
+ .custom-chk label,  .custom-opt label { padding-left:30px; min-height:22px; display: inline-block; vertical-align: middle; line-height:  22px !important; }
+ .custom-chk label { background:url(radio-checkbox-sprites.png) no-repeat 0 -44px;  }	
+ .custom-chk label.checked { background:url(radio-checkbox-sprites.png) no-repeat 0 -66px; }
+ .custom-opt label { background:url(radio-checkbox-sprites.png) no-repeat 0 0;  }	
+ .custom-opt label.checked { background:url(radio-checkbox-sprites.png) no-repeat 0 -22px; }
+ .custom-chk ul li,  .custom-opt ul li { list-style-type: none; width: 33%; float: left; }
+/* Custom Radio and Checkbox */
+</style>
+</head>
+<body>
+	<!--  Code to put in contact form 7 form integration -->
+	<!--  for checkbox add class "custom-chk" and for radio add "custom-opt"    -->
+	<div class="checkbox-section custom-chk" style="display:none;">
+	[checkbox* interestedin class:checkbox use_label_element "Track" "Turf" "Tennis/Basketball/Multi-Purpose" "Consultation Design" "Laser Controlled Grading" "Laser Controlled Asphalt Paving"]              
+	</div>
+
+	<div class="checkbox-section custom-chk">
+	<span class="wpcf7-form-control-wrap interestedin"><span class="wpcf7-form-control wpcf7-checkbox wpcf7-validates-as-required checkbox"><span class="wpcf7-list-item first"><label class=""><input type="checkbox" value="Track" name="interestedin[]"><span class="wpcf7-list-item-label">Track</span></label></span><span class="wpcf7-list-item"><label class=""><input type="checkbox" value="Turf" name="interestedin[]"><span class="wpcf7-list-item-label">Turf</span></label></span><span class="wpcf7-list-item"><label class=""><input type="checkbox" value="Tennis/Basketball/Multi-Purpose" name="interestedin[]"><span class="wpcf7-list-item-label">Tennis/Basketball/Multi-Purpose</span></label></span><span class="wpcf7-list-item"><label class=""><input type="checkbox" value="Consultation Design" name="interestedin[]"><span class="wpcf7-list-item-label">Consultation Design</span></label></span><span class="wpcf7-list-item"><label class=""><input type="checkbox" value="Laser Controlled Grading" name="interestedin[]"><span class="wpcf7-list-item-label">Laser Controlled Grading</span></label></span><span class="wpcf7-list-item last"><label class=""><input type="checkbox" value="Laser Controlled Asphalt Paving" name="interestedin[]"><span class="wpcf7-list-item-label">Laser Controlled Asphalt Paving</span></label></span></span></span>
+	              </div>
+</body>
+</html>
